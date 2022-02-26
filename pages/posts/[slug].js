@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import PostContent from '../../components/posts/post-detail/post-content';
 
 const PostDetailPage = () => {
   return (
-    <div>PostDetailPage</div>
+   <PostContent></PostContent>
   )
 }
 
