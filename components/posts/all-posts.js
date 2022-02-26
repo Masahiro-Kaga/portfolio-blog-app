@@ -1,18 +1,18 @@
 import React from "react";
-import PostsGrid from "../posts/posts-grid";
+import PostsGrid from "./posts-grid";
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
-const FeaturedPosts = (props) => {
+const AllPosts = (props) => {
   return (
-    <section css={featured_post}>
-        <h2>Featured Post</h2>
+    <section css={all_posts}>
+      <h2 >AllPosts</h2>
       <PostsGrid posts={props.posts}></PostsGrid>
     </section>
   );
 };
 
-const featured_post = css`
+const all_posts = css`
     margin: 4rem auto;
     text-align: center;
     width:90%;
@@ -20,7 +20,6 @@ const featured_post = css`
     > h2{
         font-size:2.5rem
     }
-    
 `
 
-export default FeaturedPosts;
+export default AllPosts;

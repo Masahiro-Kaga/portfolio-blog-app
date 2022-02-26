@@ -1,3 +1,7 @@
+Logo,icon作成
+    https://hatchful.shopify.com/ja/
+avatar作成
+    https://charat.me/face/create/
 
 index.jsの以下を削除。多分本番だと必要。
 
@@ -9,7 +13,12 @@ import Head from "next/head";
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+!!!!!!!!!
+必要は必要だけど、htmlはnextにはない。_document.jsを作る。マックスの最後のセクションに出てくる。
+そこでヘッダとかを改めて設定する。https://nextjs.org/docs/basic-features/font-optimization
+Googlefontの追加方法も上のURL参照。
 
+さて
 必要コンポーネント作成
     ただし、slugとかcontactとかはまだいらない、逆にこんがらがる。必要なhero.jsとかページ頭のindex.jsとかだけでいい。
 
