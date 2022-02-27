@@ -19,6 +19,7 @@ const header = css`
   h1 {
     text-align: center;
     font-family: "Dosis", sans-serif;
+    margin-left:1rem;
   }
   @media (min-width: 600px) {
       display: flex;

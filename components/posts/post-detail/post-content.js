@@ -1,3 +1,5 @@
+
+import ReactMarkdown from "react-markdown";
 import React, { Fragment } from "react";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
@@ -16,7 +18,7 @@ const PostContent = () => {
   return (
     <article css={post_content}>
       <PostHeader title={DUMMY_POST.title} image={imagePath}></PostHeader>
-      <p>{DUMMY_POST.content}</p>
+      <ReactMarkdown>{DUMMY_POST.content}</ReactMarkdown>
     </article>
   );
 };
