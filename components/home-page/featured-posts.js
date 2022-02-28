@@ -18,7 +18,8 @@ const featured_post = css`
     width:90%;
     font-family: "Dosis", sans-serif;
     > h2{
-        font-size:2.5rem
+        font-size:2.5rem;
+        margin: 10rem auto;
     }
     
 `

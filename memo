@@ -322,6 +322,13 @@ getStaticPaths: パスを表示するためのものらしい。
 -------------------------------------------------
 
 191
+    結論：あまり深入りしなくても良い。GithubのReactmarkdownのページに、詳しく写真を載せる方法などは書いてない。
+    ただし、他にmarkdownのコンテンツの中に何かレンダーしたい機能（今回のようにimageだけじゃなくてHighlightingとか）とかあれば、とりあえず、この方法は覚えておく、くらい。
+    ちなみに、image.altとimage.properties.srcのimageオブジェクトは、markdownのコンテントの中
+    ![Create routes via your file + folder structure](nextjs-file-based-routing.png)
+    から来てる。[]内がalt,()内がproperties.src.
+    
+
     マークダウンの記法に変更があるとのワーニング記事。次のセクション行く前にチェック必要。
 
 192 Again,修正版を見てね。

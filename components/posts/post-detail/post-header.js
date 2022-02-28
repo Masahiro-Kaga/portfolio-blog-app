@@ -33,6 +33,7 @@ const header = css`
 `;
 
 const image_box = css`
+  object-fit: cover;
   @media (min-width: 600px) {
       width: 30%;
   }
