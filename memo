@@ -166,6 +166,11 @@ postsコンポーネント直下に、mdファイルを作って必要なデー�
 
 事前の留意事項として、このフォルダのなかで、console.logしようとしても、サーバーサイドで実行するという扱いになるらしいので、クライアントサイドではこのconsole.logは表示されない。サーバーサイドのほうでよろしくやってるっぽい。
 
+先にこれを読んでおいたら、SSG/SSRの違いとか同時に使えるとかがわかってよいかも。
+https://zenn.dev/luvmini511/articles/1523113e0dec58
+また、大事なこととして、getStaticPropsは、コンポーネントではなくて、pageに直接使われることに注目。おそらく、事前レンダリングとかそれに伴うSEOとかは、当然大元のページに直接関連するからだと思う。
+
+
 関連フォルダとして、
 lib
 |
@@ -238,14 +243,22 @@ function getPostsDirectoryの設定
     content:"# This is a titlec
         This is some regular text with a [link](https://google.com)"
 
-function getAllPosts()↓
+[それぞれのファンクションの役割]
+
+* function getPostData(ファイル名、拡張子無し)
+    ファイルの中身をオブジェクト形式でreturn/抽出する。
+
+* function getPostsFiles()
+    ディレクトリの中にある全てのファイル名（拡張子含め）を配列形式で抽出する。
+
+* function getAllPosts()↓
     postFiles:fsのディレクトリ読み込みを使ってmd入ってるフォルダの名前が入った配列を作る。
 
     allPosts:上で作ったファンクションとmapを使って、ひとつづつ変数に配列形式で入れていく。
 
     sortedPosts:日付順に並べる。
 
-getFeaturedPosts()↓
+* getFeaturedPosts()↓
     ここで、各mdのデータ部分でisFeatured:trueになってるものだけフィルターで抽出。
 
     allPosts:一旦、上の全データ取得。

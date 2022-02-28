@@ -1,7 +1,7 @@
 ---
 title: 'getting-started-with-myblog'
 date: '2022-2-27'
-image: 'getting-started-with-myblog'
+image: 'getting-started-with-myblog.png'
 excerpt: 'It is a challenging to be a web developer. However, I deserve to try it, and never give up!'
 isFeatured: 'true'
 ---
