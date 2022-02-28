@@ -10,4 +10,16 @@ isFeatured: 'true'
 
 Entire design seems quite simple because of Bootstrap, thus I am going to tweak these design for a week, or ASAP!
 
+For testing Syntax highliter below,
+
+```language-js
+const basics = 'Okay, that should not be too difficult actually';
+
+function printBasics() {
+  console.log(basics):
+}
+
+printBasics();
+```
+
 ![React Bootstrap](bootstrap-icons.png)
