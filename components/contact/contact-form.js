@@ -1,25 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
 const ContactForm = () => {
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredMessage, setEnteredMessage] = useState("");
+
+  function sendMessageHandler(event){
+    event.preventDefault();
+    fetch('/api/contact',{
+      method:'POST',
+      body:JSON.stringify(
+        {
+          name:enteredName,
+          email:enteredEmail,
+          message:enteredMessage
+        }
+      ),
+      headers:{
+        'Content-Type' : 'application/json'
+      }
+    })
+  }
+
   return (
     <section css={contact}>
       <h1>How can I help you?</h1>
-      <form css={form}>
+      <form css={form} onSubmit={sendMessageHandler}>
         <div css={controls}>
           <div css={control}>
             <label htmlFor="name">Your Name</label>
-            <input type="text" id="name" required />
+            <input
+              type="text"
+              id="name"
+              required
+              value={enteredName}
+              onChange={(event) => setEnteredName(e.target.value)}
+            />
           </div>
           <div css={control}>
             <label htmlFor="email">Your Email</label>
-            <input type="email" id="email" required />
+            <input
+              type="email"
+              id="email"
+              required
+              value={enteredEmail}
+              onChange={(event) => setEnteredEmail(e.target.value)}
+            />
           </div>
         </div>
         <div css={control}>
           <label htmlFor="message">Your Message</label>
-          <textarea id="message" rows="5" required></textarea>
+          <textarea
+            id="message"
+            rows="5"
+            required
+            value={enteredMessage}
+            onChange={(event) => setEnteredMessage(e.target.value)}
+          ></textarea>
         </div>
 
         <div css={actions}>
@@ -33,12 +72,11 @@ const ContactForm = () => {
 const contact = css`
   margin: 3rem auto;
   border-radius: 10px;
-  background-color: var(--color-grey-100);
   width: 90%;
   max-width: 50rem;
   padding: 2rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  font-size:1.5rem;
+  font-size: 1.5rem;
   font-family: "Dosis", sans-serif;
   h1 {
     font-size: 3rem;
@@ -59,7 +97,7 @@ const form = css`
     padding: 0.25rem;
     border-radius: 10px;
     width: 100%;
-    border: 1px solid hsl(265, 4%, 70%);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     resize: none;
   }
   button {
@@ -82,7 +120,7 @@ const controls = css`
   display: flex;
   column-gap: 1.5rem;
   flex-wrap: wrap;
-  margin:2rem 0;
+  margin: 2rem 0;
 `;
 
 const control = css`
