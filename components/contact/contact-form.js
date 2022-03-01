@@ -21,7 +21,7 @@ const ContactForm = () => {
       headers:{
         'Content-Type' : 'application/json'
       }
-    })
+    });
   }
 
   return (
@@ -36,7 +36,7 @@ const ContactForm = () => {
               id="name"
               required
               value={enteredName}
-              onChange={(event) => setEnteredName(e.target.value)}
+              onChange={(event) => setEnteredName(event.target.value)}
             />
           </div>
           <div css={control}>
@@ -46,7 +46,7 @@ const ContactForm = () => {
               id="email"
               required
               value={enteredEmail}
-              onChange={(event) => setEnteredEmail(e.target.value)}
+              onChange={(event) => setEnteredEmail(event.target.value)}
             />
           </div>
         </div>
@@ -57,7 +57,7 @@ const ContactForm = () => {
             rows="5"
             required
             value={enteredMessage}
-            onChange={(event) => setEnteredMessage(e.target.value)}
+            onChange={(event) => setEnteredMessage(event.target.value)}
           ></textarea>
         </div>
 
