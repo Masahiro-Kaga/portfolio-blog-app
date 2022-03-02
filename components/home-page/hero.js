@@ -25,6 +25,7 @@ const container = css`
   font-family: "Dosis", sans-serif;
   text-align: center;
   margin: 4rem auto;
+  
   @media (min-width: 600px) {
     display: flex;
     flex-direction: row;

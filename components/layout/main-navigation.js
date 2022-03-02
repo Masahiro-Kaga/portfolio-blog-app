@@ -39,11 +39,18 @@ const MainNavigation = () => {
 };
 
 const header = css`
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  background-color: white;
+  box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.2);
   font-family: "Dosis", sans-serif;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 `;
 
 const logo_container = css`
