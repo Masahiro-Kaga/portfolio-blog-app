@@ -18,7 +18,7 @@ const MainNavigation = () => {
               ></Image>
             </figure>
             <div>
-              <h2>Masa's Blog</h2>
+              <h2>Masa&apos;s Blog</h2>
               <p>Look back my day!</p>
             </div>
           </div>

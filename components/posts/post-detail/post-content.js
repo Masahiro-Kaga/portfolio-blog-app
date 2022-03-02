@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import PostHeader from './post-header';
 import Image from "next/image";
-import React from "react";
 import ReactMarkdown from "react-markdown";
-import PostHeader from "./post-header";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+
+SyntaxHighlighter.registerLanguage('js', js);
 
 const PostContent = (props) => {
   const { post } = props;
