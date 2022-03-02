@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 
 const ContactForm = () => {
   const [enteredName, setEnteredName] = useState("");
@@ -8,9 +8,19 @@ const ContactForm = () => {
   const [enteredMessage, setEnteredMessage] = useState("");
   const [requestStatus, setRequestStatus] = useState();
 
+  useEffect(() => {
+    if(requestStatus === 'Success' || requestStatus === 'Error'){
+      const timer = setTimeout(() => {
+        setRequestStatus(null);
+      }, 8000);
+      return ()=>clearTimeout(timer);
+    }
+  }, [requestStatus]);
+  
+
   async function sendMessageHandler(event) {
     event.preventDefault();
-    setRequestStatus('pending');
+    setRequestStatus("Pending");
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -27,12 +37,12 @@ const ContactForm = () => {
       if (!response.ok) {
         throw new Error(data.message || "something went wrong!");
       }
-      setRequestStatus('Success');
-      setEnteredName('');
-      setEnteredEmail('');
-      setEnteredMessage('');
+      setRequestStatus("Success");
+      setEnteredName("");
+      setEnteredEmail("");
+      setEnteredMessage("");
     } catch (error) {
-      setRequestStatus('Error');
+      setRequestStatus("Error");
     }
   }
 
@@ -73,9 +83,9 @@ const ContactForm = () => {
           ></textarea>
         </div>
         <div css={actions}>
+          <p>{requestStatus}</p>
           <button>Send Message</button>
         </div>
-        <div>{requestStatus}</div>
       </form>
     </section>
   );
@@ -112,16 +122,6 @@ const form = css`
     border: 1px solid rgba(0, 0, 0, 0.2);
     resize: none;
   }
-  button {
-    font: inherit;
-    cursor: pointer;
-    background-color: #007bff;
-    border: 1px solid #007bff;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    color: white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  }
   button:hover {
     background-color: #0055ff;
     border-color: #0044ff;
@@ -141,8 +141,32 @@ const control = css`
 `;
 
 const actions = css`
+  display: flex;
+  justify-content: space-between;
   margin-top: 1rem;
-  text-align: right;
+  height: 100%;
+  button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  p {
+    margin: auto 0;
+    animation: fadeinout 1s infinite alternate;
+    @keyframes fadeinout {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
 export default ContactForm;
