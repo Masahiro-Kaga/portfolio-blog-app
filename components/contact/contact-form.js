@@ -6,22 +6,34 @@ const ContactForm = () => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredMessage, setEnteredMessage] = useState("");
+  const [requestStatus, setRequestStatus] = useState();
 
-  function sendMessageHandler(event){
+  async function sendMessageHandler(event) {
     event.preventDefault();
-    fetch('/api/contact',{
-      method:'POST',
-      body:JSON.stringify(
-        {
-          name:enteredName,
-          email:enteredEmail,
-          message:enteredMessage
-        }
-      ),
-      headers:{
-        'Content-Type' : 'application/json'
+    setRequestStatus('pending');
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify({
+          name: enteredName,
+          email: enteredEmail,
+          message: enteredMessage,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "something went wrong!");
       }
-    });
+      setRequestStatus('Success');
+      setEnteredName('');
+      setEnteredEmail('');
+      setEnteredMessage('');
+    } catch (error) {
+      setRequestStatus('Error');
+    }
   }
 
   return (
@@ -60,10 +72,10 @@ const ContactForm = () => {
             onChange={(event) => setEnteredMessage(event.target.value)}
           ></textarea>
         </div>
-
         <div css={actions}>
           <button>Send Message</button>
         </div>
+        <div>{requestStatus}</div>
       </form>
     </section>
   );

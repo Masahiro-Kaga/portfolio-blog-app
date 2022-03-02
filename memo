@@ -396,6 +396,10 @@ const customRenderers:
 198
     フォームが送信されたときの、フッターあたりにsuccess/errorをだす機能の実装。
 
+    return () => clearTimeout(timer)
+    特殊な使い方。これだと、setTimeoutが効かずにすぐクリアされてしまうと思いがちだが、3000秒たった後にclearTimeoutが効果を発揮するらしい。
+    マックスは説明していないけど、こういう挙動をするということは覚えておいたほうが良い。
+
 async function sendContactData(contactDetails)
     フェッチしてポストするファンクション。
     フォームが送信された時に発動するように、下のsendMessageHandler内で使われる。
